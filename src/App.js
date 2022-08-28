@@ -6,6 +6,7 @@ import "./App.css";
 import ProductList from "./components/product-list.component";
 import Product from "./components/product.component";
 import AddProduct from "./components/add-product.component";
+import Billing from "./components/billing.component";
 
 class App extends Component {
   render() {
@@ -26,6 +27,11 @@ class App extends Component {
                 Add
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/billing"} className="nav-link">
+                사용료 확인
+              </Link>
+            </li>
           </div>
         </nav>
         <div className="container mt-3">
@@ -33,6 +39,7 @@ class App extends Component {
             <Route exact path="/products" element={<ProductList />} />
             <Route exact path="/add" element={<AddProduct />} />
             <Route exact path="/product/:id" element={<Product />} />
+            <Route exact path="/billing" element={<Billing />} />
           </Routes>
         </div>
       </div>
