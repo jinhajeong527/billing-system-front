@@ -6,9 +6,11 @@ export default class ProductList extends Component {
     constructor(props) {
         super(props);
         this.getAllProducts = this.getAllProducts.bind(this);
-
+        this.setActiveProduct = this.setActiveProduct.bind(this);
         this.state = {
-            products: []
+            products: [],
+            currentProduct: null,
+            currentIndex: -1
         };
     }
     componentDidMount() {
@@ -26,16 +28,23 @@ export default class ProductList extends Component {
           .catch(e => {
             console.log(e);
           });
-      }
+    }
+    setActiveProduct(product, index) {
+        this.setState({
+          currentProduct: product,
+          currentIndex: index
+        });
+    }
     render() {
-        const { products } = this.state;
+        const { products, currentProduct, currentIndex } = this.state;
         return (
         <div className="list row">
             <div className="col-md-6">
                 <h4>Products List</h4>
-                <table class="table">
+                <table className="table">
                     <thead>
                         <tr>
+                            <th scope="col">수정 및 삭제</th>
                             <th scope="col">아이디</th>
                             <th scope="col">상품명</th>
                             <th scope="col">상품유형</th>
@@ -49,6 +58,9 @@ export default class ProductList extends Component {
                     <tbody>
                     { products && products.map((product) => (    
                         <tr>
+                            <th>
+                            <Link to={"/product/" + product.product.id}>클릭</Link>
+                            </th>
                             <th scope="row">{product.product.id}</th>
                             <td>{product.product.name}</td>
                             <td>{product.product.productType}</td>
@@ -64,6 +76,8 @@ export default class ProductList extends Component {
                         ))}
                     </tbody>
                 </table>
+                
+       
             </div>
         </div>
         );
