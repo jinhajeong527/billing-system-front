@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import ProductList from "./components/product-list.component";
+import AddProduct from "./components/add-product.component";
 
 class App extends Component {
   render() {
@@ -29,6 +30,7 @@ class App extends Component {
         <div className="container mt-3">
           <Routes>
             <Route exact path="/products" element={<ProductList />} />
+            <Route exact path="/add" element={<AddProduct />} />
           </Routes>
         </div>
       </div>
