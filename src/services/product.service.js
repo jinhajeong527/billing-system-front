@@ -1,8 +1,8 @@
 import http from "../http-common";
 
 class ProductService {
-    getAll() {
-        return http.get("/product");
+    getAll(data) {
+        return http.post("/product/paging", data);
     }
     get(id) {
         return http.get(`/product/${id}`);
