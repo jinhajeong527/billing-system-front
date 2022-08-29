@@ -94,9 +94,9 @@ export default class ProductList extends Component {
                             <td>{product.product.productType}</td>
                             <td>{product.product.minCpu}</td>
                             <td>{product.product.chargeUnit}</td>
-                            <td>{product.priceHistory.id}
-                                {product.priceHistory.price} KRW
-                                {product.priceHistory.createDate}
+                            <td>({product.priceHistory.id})
+                                 {product.priceHistory.price} KRW<br/>
+                                 {product.priceHistory.createDate}
                             </td>
                             <td>{product.product.createDate}</td>
                             <td>{product.product.updateDate}</td>

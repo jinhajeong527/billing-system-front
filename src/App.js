@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
+import AuthService from "./services/auth.service";
+import Login from "./components/login.component";
 import ProductList from "./components/product-list.component";
 import Product from "./components/product.component";
 import AddProduct from "./components/add-product.component";
@@ -17,6 +18,11 @@ class App extends Component {
             Whatap
           </a>
           <div className="navbar-nav mr-auto">
+            <li className="nav-itsem">
+              <Link to={"/login"} className="nav-link">
+                로그인
+              </Link>
+            </li>
             <li className="nav-itsem">
               <Link to={"/products"} className="nav-link">
                 상품 리스트
@@ -36,6 +42,7 @@ class App extends Component {
         </nav>
         <div className="container mt-3">
           <Routes>
+            <Route exact path="/login" element={<Login />} />
             <Route exact path="/products" element={<ProductList />} />
             <Route exact path="/add" element={<AddProduct />} />
             <Route exact path="/product/:id" element={<Product />} />
