@@ -84,22 +84,22 @@ export default class ProductList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                    { products && products.map((product) => (    
-                        <tr>
+                    { products && products.map((productPayload) => (    
+                        <tr key={productPayload.product.id}>
                             <th>
-                            <Link to={"/product/" + product.product.id}>관리</Link>
+                            <Link to={"/product/" + productPayload.product.id}>관리</Link>
                             </th>
-                            <td>{product.product.id}</td>
-                            <td>{product.product.name}</td>
-                            <td>{product.product.productType}</td>
-                            <td>{product.product.minCpu}</td>
-                            <td>{product.product.chargeUnit}</td>
-                            <td>({product.priceHistory.id})
-                                 {product.priceHistory.price} KRW<br/>
-                                 {product.priceHistory.createDate}
+                            <td>{productPayload.product.id}</td>
+                            <td>{productPayload.product.name}</td>
+                            <td>{productPayload.product.productType}</td>
+                            <td>{productPayload.product.minCpu}</td>
+                            <td>{productPayload.product.chargeUnit}</td>
+                            <td>({productPayload.priceHistory.id})
+                                 {productPayload.priceHistory.price} KRW<br/>
+                                 {productPayload.priceHistory.createDate}
                             </td>
-                            <td>{product.product.createDate}</td>
-                            <td>{product.product.updateDate}</td>
+                            <td>{productPayload.product.createDate}</td>
+                            <td>{productPayload.product.updateDate}</td>
                         </tr>
                         ))}
                     </tbody>

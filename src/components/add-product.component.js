@@ -13,11 +13,11 @@ export default class AddProduct extends Component {
         //this.newTutorial = this.newTutorial.bind(this);
         
         this.state = {
-          productType: null,
-          name: null,
-          minCpu: null,
-          chargeUnit: null,
-          price: null,
+          productType: "",
+          name: "",
+          minCpu: "",
+          chargeUnit: "",
+          price: "",
           submitted: false
         };
     }

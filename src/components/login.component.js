@@ -3,6 +3,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/auth.service";
+
 const required = value => {
     if (!value) {
         return (
@@ -12,6 +13,8 @@ const required = value => {
         );
     }
 };
+
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -25,6 +28,7 @@ export default class Login extends Component {
           message: ""
         };
     }
+
     onChangeUsername(e) {
         this.setState({
             username: e.target.value
@@ -36,6 +40,10 @@ export default class Login extends Component {
         });
     }
     handleLogin(e) {
+        var data = {
+            username: this.state.username,
+            password: this.state.password
+        };
         e.preventDefault();
         this.setState({
             message: "",
@@ -43,9 +51,9 @@ export default class Login extends Component {
         });
         this.form.validateAll();
         if (this.checkBtn.context._errors.length === 0) {
-            AuthService.login(this.state.username, this.state.password).then(
+            AuthService.login(data).then(
             () => {
-              //this.props.history.push("/profile");
+              this.props.history.push("/");
               window.location.reload();
             },
             error => {

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ProductService from "../services/product.service";
-import { Redirect } from "react-router-dom";
 
 export default class Product extends Component {
     
@@ -114,7 +113,6 @@ export default class Product extends Component {
     }
 
     updateProduct() {
-        console.log(this.state);
         ProductService.update(
           this.state.currentProduct.id,
           this.state.currentProduct
@@ -123,8 +121,8 @@ export default class Product extends Component {
         console.log(response.data);
         this.setState({
               message: "상품이 성공적으로 등록되었습니다."
-        });
-         })
+            });
+        })
         .catch(e => {
             console.log(e);
         });
@@ -133,6 +131,7 @@ export default class Product extends Component {
         ProductService.delete(this.state.currentProduct.id)
           .then(response => {
             console.log(response.data);
+            this.props.history.push("/products");
           })
           .catch(e => {
             console.log(e);

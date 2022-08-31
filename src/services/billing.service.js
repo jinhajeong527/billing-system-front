@@ -2,8 +2,8 @@ import http from "../http-common";
 
 class BillingService {
 
-    get() {
-        return http.get("/billing");
+    get(data) {
+        return http.post("/billing", data);
     }
     
 }
